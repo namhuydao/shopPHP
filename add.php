@@ -11,10 +11,6 @@ if (isset($_POST['add'])) {
     $file_tem_loc = $_FILES['fileToUpload']['tmp_name'];
     $file_store = "upload/" . $file_name;
     $uploadOk = 1;
-    if (file_exists($file_store)) {
-        echo "<script>alert('Sorry, file already exists.'); window.location = 'index.php';</script>";
-        $uploadOk = 0;
-    }
     if($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg"
         && $file_type != "gif" ) {
         echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.'); window.location = 'index.php';</script>";

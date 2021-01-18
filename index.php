@@ -72,7 +72,7 @@ $result = $conn->query($sql);
                         <input type="file" name="fileToUpload" id="fileToUpload" style="outline: none">
                     </div>
                     <div class="form-group">
-                        <img width ="100" id="updateImgId"/>
+                        <img width="100" id="updateImgId"/>
                     </div>
                     <div class="modal-footer">
                         <input type="submit" name="updateData" class="btn btn-primary" value="Update">
@@ -185,8 +185,17 @@ $result = $conn->query($sql);
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['description']; ?></td>
                             <td><?php echo $row['content']; ?></td>
-                            <td class="imgtd"><img width ="100" src="<?php echo $row['images']; ?>"/></td>
-                            <td><?php echo $row['status']; ?></td>
+                            <td class="imgtd"><img width="100" src="<?php echo $row['images']; ?>"/></td>
+                            <?php
+                            $status = $row['status'];
+                            if ($status == 0) {
+                                $strStatus = "<a class='btn btn-danger btn-sm' href=activate.php?id=" . $row['id'] . ">Deactivate</a>";
+                            }
+                            if ($status == 1) {
+                                $strStatus = "<a class='btn btn-primary btn-sm' href=deactivate.php?id=" . $row['id'] . ">Activate</a>";
+                            }
+                            ?>
+                            <td><?php echo $strStatus ?></td>
                             <td>
                                 <button data-toggle="modal" data-target="#editModal"
                                         class="btn btn-primary btn-sm editBtn">Edit
