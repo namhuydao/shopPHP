@@ -4,7 +4,6 @@
 $id = $_GET['id'];
 $sql = "UPDATE  product SET status = '1' WHERE id ='$id'";
 if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('Product Activated')</script>";
     header("location:index.php");
 } else {
     echo '("Product not activated")';

@@ -5,16 +5,18 @@ if (isset($_POST['add'])) {
     $name = test_input($_POST["name"]);
     $description = test_input($_POST["description"]);
     $content = test_input($_POST["content"]);
-    $file_name = uniqid() . "." . pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION);
-    $file_type = strtolower(pathinfo($file_name,PATHINFO_EXTENSION));
+    $file_name = uniqid() . "." . pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
+    $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
     $file_size = $_FILES['fileToUpload']['size'];
     $file_tem_loc = $_FILES['fileToUpload']['tmp_name'];
     $file_store = "upload/" . $file_name;
     $uploadOk = 1;
-    if($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg"
-        && $file_type != "gif" ) {
-        echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.'); window.location = 'index.php';</script>";
-        $uploadOk = 0;
+    if (is_uploaded_file($_FILES['fileToUpload']['tmp_name'])) {
+        if (($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg"
+            && $file_type != "gif")) {
+            echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.'); window.location = 'index.php';</script>";
+            $uploadOk = 0;
+        }
     }
     if ($file_size > 500000) {
         echo "<script>alert('Sorry, your file is too large.'); window.location = 'index.php';</script>";
@@ -31,4 +33,3 @@ if (isset($_POST['add'])) {
         }
     }
 }
-?>
