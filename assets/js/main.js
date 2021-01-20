@@ -9,7 +9,6 @@ $(document).ready(function(){
     $('#name').val(data[1]);
     $('#description').val(data[2]);
     $('#content').val(data[3]);
-    $('#fileToUpload').children().children('span').html = "sadadas";
     $('#updateImgId').attr('src',$tr.children('.imgtd').children().attr('src'));
 
   })

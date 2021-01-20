@@ -1,7 +1,6 @@
 <?php include './database.php' ?>
 <?php include './function.php' ?>
 <?php
-
 $id = $_POST['update_id'];
 $name = $_POST["name"];
 $description = $_POST["description"];
